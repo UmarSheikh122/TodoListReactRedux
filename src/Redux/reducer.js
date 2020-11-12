@@ -2,18 +2,7 @@ import {ADD_TODO,UPDATE_TODO,DELETE_TODO} from './actiontypes'
 
 
 export const initialState=[
-    {
-    id:1,
-    name:"One"
-    },
-    {
-    id:2,
-    name:"Two"
-    },
-    {
-    id:3,
-    name:"Three"
-    }]
+   ]
 const reducer=(state=initialState,action)=>{
     console.log("Reducer-State",state)
     switch(action.type)
@@ -24,10 +13,18 @@ const reducer=(state=initialState,action)=>{
             return newTodoo                    
                 
             case UPDATE_TODO:
+                console.log("Update Call")
             let newTodo=[...state];
-            let index=newTodo.findIndex((todo)=>todo.id)
+            for(let i=0;i<newTodo.length;i++)
+            {
+                    console.log(i,' Key- ',newTodo[i] )
+            }
+            let index=newTodo.findIndex((todo)=>todo.id==action.payload.id)
+            console.log("Yeh hai INDEX", index)
             if(index!=-1)
             {
+                console.log("Yeh hai INDEX- Ander", index)
+
                 newTodo[index]=action.payload
             }
             console.log(index);
